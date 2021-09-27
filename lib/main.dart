@@ -1,8 +1,5 @@
 import 'package:first_app/widgets/user_transaction.dart';
 
-import './widgets/new_transaction.dart';
-
-import './widgets/transaction_list.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
