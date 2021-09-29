@@ -14,6 +14,7 @@ class _NewTransactionState extends State<NewTransaction> {
 
   final amountController = TextEditingController();
 
+  // when new data is added
   void submitData() {
     final enteredTitle = titleController.text;
     final enteredAmount = double.parse(amountController.text);
@@ -23,6 +24,9 @@ class _NewTransactionState extends State<NewTransaction> {
     }
 
     widget.addNewTransaction(enteredTitle, enteredAmount);
+
+    // close modal
+    Navigator.of(context).pop();
   }
 
   @override
