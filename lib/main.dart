@@ -1,3 +1,5 @@
+import './/widgets/chart.dart';
+
 import './widgets/new_transaction.dart';
 import './widgets/transaction_list.dart';
 import './models/transaction.dart';
@@ -27,10 +29,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [
-    Transaction(
-        id: '1', title: 'New Shoes', amount: 33.21, date: DateTime.now()),
-    Transaction(
-        id: '2', title: 'Groceries', amount: 72.82, date: DateTime.now())
+    // Transaction(
+    //     id: '1', title: 'New Shoes', amount: 33.21, date: DateTime.now()),
+    // Transaction(
+    //     id: '2', title: 'Groceries', amount: 72.82, date: DateTime.now())
   ];
 
   void _addNewTransaction(String title, double amount) {
@@ -54,6 +56,16 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  List<Transaction> get _recentTransactions {
+    return _userTransactions.where((tx) {
+      return tx.date.isAfter(
+        DateTime.now().subtract(
+          Duration(days: 7),
+        ),
+      );
+    }).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,13 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              width: double.infinity,
-              child: Card(
-                child: Container(width: 100, child: Text('CHART!')),
-                elevation: 5,
-              ),
-            ),
+            Chart(_recentTransactions),
             TransactionList(_userTransactions)
           ],
         ),
