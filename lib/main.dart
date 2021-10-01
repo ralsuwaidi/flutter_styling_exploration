@@ -47,12 +47,6 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void _deleteTransaction(String id) {
-    setState(() {
-      _userTransactions.removeWhere((element) => element.id == id);
-    });
-  }
-
   void _startAddNewTrx(ctx) {
     showModalBottomSheet(
       context: ctx,
@@ -72,22 +66,37 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
+  // build method
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final isLandscape = mediaQuery.orientation == Orientation.landscape;
+    final appBar = AppBar(
+      title: Text('Flutter App'),
+      actions: [
+        IconButton(
+            onPressed: () => _startAddNewTrx(context), icon: Icon(Icons.add))
+      ],
+    );
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Money Tracker'),
-        actions: [
-          IconButton(
-              onPressed: () => _startAddNewTrx(context), icon: Icon(Icons.add))
-        ],
-      ),
+      appBar: appBar,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Chart(_recentTransactions),
-            TransactionList(_userTransactions, _deleteTransaction)
+            if (!isLandscape)
+              Container(
+                  height: (mediaQuery.size.height -
+                          appBar.preferredSize.height -
+                          mediaQuery.padding.top) *
+                      0.25,
+                  child: Chart(_recentTransactions)),
+            Container(
+                height: (mediaQuery.size.height -
+                        appBar.preferredSize.height -
+                        mediaQuery.padding.top) *
+                    0.75,
+                child: TransactionList(_userTransactions))
           ],
         ),
       ),
