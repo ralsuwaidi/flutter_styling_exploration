@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter App',
+      title: 'Money Tracker',
       home: MyHomePage(),
       theme: ThemeData(
         primarySwatch: Colors.indigo,
@@ -76,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter App'),
+        title: Text('Money Tracker'),
         actions: [
           IconButton(
               onPressed: () => _startAddNewTrx(context), icon: Icon(Icons.add))
