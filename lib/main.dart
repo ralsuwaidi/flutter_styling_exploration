@@ -72,10 +72,18 @@ class _MyHomePageState extends State<MyHomePage> {
     final mediaQuery = MediaQuery.of(context);
     final isLandscape = mediaQuery.orientation == Orientation.landscape;
     final appBar = AppBar(
-      title: Text('Flutter App'),
+      elevation: 0,
+      title: Text(
+        'Personal Transactions',
+        style: TextStyle(
+            color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold),
+      ),
+      backgroundColor: Colors.white,
       actions: [
         IconButton(
-            onPressed: () => _startAddNewTrx(context), icon: Icon(Icons.add))
+          onPressed: () => _startAddNewTrx(context),
+          icon: Icon(Icons.add, color: Colors.black),
+        )
       ],
     );
     return Scaffold(
