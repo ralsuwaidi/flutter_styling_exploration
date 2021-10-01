@@ -59,6 +59,12 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  void _deleteTransaction(String id) {
+    setState(() {
+      _userTransactions.removeWhere((element) => element.id == id);
+    });
+  }
+
   List<Transaction> get _recentTransactions {
     return _userTransactions.where((tx) {
       return tx.date.isAfter(
@@ -119,11 +125,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       0.25,
                   child: Chart(_recentTransactions)),
             Container(
-                height: (mediaQuery.size.height -
-                        _appBar.preferredSize.height -
-                        mediaQuery.padding.top) *
-                    0.75,
-                child: TransactionList(_userTransactions))
+              height: (mediaQuery.size.height -
+                      _appBar.preferredSize.height -
+                      mediaQuery.padding.top) *
+                  0.75,
+              child: TransactionList(_userTransactions, _deleteTransaction),
+            )
           ],
         ),
       ),
