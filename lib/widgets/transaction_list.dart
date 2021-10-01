@@ -30,10 +30,21 @@ class TransactionList extends StatelessWidget {
               return Dismissible(
                 key: Key(DateTime.now().toString()),
                 // delete when swipe away
+                direction: DismissDirection.endToStart,
                 onDismissed: (direction) {
                   deleteTransaction(transactions[index].id);
                 },
-                background: Container(color: Colors.red),
+                background: Container(
+                  alignment: AlignmentDirectional.centerEnd,
+                  color: Colors.red,
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(0.0, 0.0, 10.0, 0.0),
+                    child: Icon(
+                      Icons.delete,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
                 child: Card(
                   elevation: 5,
                   margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
