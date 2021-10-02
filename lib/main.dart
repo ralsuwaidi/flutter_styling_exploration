@@ -100,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
               'Money Tracker',
               style: TextStyle(
                   color: Colors.black,
-                  fontSize: 24,
+                  fontSize: 28,
                   fontWeight: FontWeight.bold),
             ),
             backgroundColor: Colors.transparent,

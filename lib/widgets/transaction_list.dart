@@ -13,16 +13,17 @@ class TransactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     return transactions.isEmpty
         ? Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
-                height: 10,
-              ),
               Flexible(
                 child: Image.asset(
                   'assets/images/empty.png',
                   fit: BoxFit.cover,
                 ),
               ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.2,
+              )
             ],
           )
         : ListView.builder(
