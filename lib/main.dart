@@ -97,13 +97,13 @@ class _MyHomePageState extends State<MyHomePage> {
         : AppBar(
             elevation: 0,
             title: Text(
-              'Personal Transactions',
+              'Money Tracker',
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 24,
                   fontWeight: FontWeight.bold),
             ),
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.transparent,
             actions: [
               IconButton(
                 onPressed: () => _startAddNewTrx(context),
